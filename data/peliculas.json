@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "titulo": "Dune",
+    "imagen": "dune.jpg",
+    "generos": ["Aventura", "Ciencia Ficción", "Drama"],
+    "sinopsis": "En un futuro lejano, la humanidad se ha expandido a través de las estrellas. Paul Atreides, un joven brillante y dotado nacido con un gran destino más allá de su comprensión, debe viajar al planeta más peligroso del universo para asegurar el futuro de su familia y su pueblo. A medida que las fuerzas malévolas estallan en conflicto por el suministro exclusivo del planeta del recurso más preciado que existe (una mercancía capaz de desbloquear el mayor potencial de la humanidad), solo sobrevivirán aquellos que puedan conquistar su miedo.",
+    "trailer": "https://www.youtube.com/embed/mSY_NbSmaUI",
+    "fecha_estreno": "2021-10-22",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 2,
+    "titulo": "50 primeras citas",
+    "imagen": "50-primeras-citas.jpg",
+    "generos": ["Comedia", "Romance"],
+    "sinopsis": "Henry Roth es un biólogo marino que vive en Hawái y disfruta de la compañía de mujeres turistas sin comprometerse. Sin embargo, su vida cambia cuando conoce a Lucy Whitmore, una profesora de arte encantadora y divertida de la que se enamora de inmediato. El problema es que Lucy sufre de amnesia anterógrada, una condición que le impide recordar nada de lo que sucedió el día anterior desde que sufrió un grave accidente de tráfico. Para Henry, cada día es un nuevo reto para intentar ganarse su amor otra vez de forma creativa e incansable.",
+    "trailer": "https://www.youtube.com/embed/17KJk3ErIx0",
+    "fecha_estreno": "2004-02-13",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 3,
+    "titulo": "Batman: El Caballero de la Noche",
+    "imagen": "batman-caballero-de-la-noche.webp",
+    "generos": ["Acción", "Crimen", "Drama"],
+    "sinopsis": "Con la ayuda del teniente Jim Gordon y el nuevo y comprometido Fiscal de Distrito Harvey Dent, Batman se propone destruir para siempre el crimen organizado en la Ciudad de Gotham. El triunvirato demuestra ser muy eficaz, pero pronto se encontrarán presos de una mente criminal maestro en ascenso conocido popularmente por aterrorizar a los ciudadanos de Gotham como el Joker. Su principal meta es empujar a Batman cada vez más cerca de cruzar la fina línea entre el heroísmo y el simple vigilantismo sin control.",
+    "trailer": "https://www.youtube.com/embed/dzQtWkpc2-c",
+    "fecha_estreno": "2008-07-18",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 4,
+    "titulo": "Meteoro (Speed Racer)",
+    "imagen": "speed-racer.jpg",
+    "generos": ["Acción", "Familiar", "Ciencia Ficción"],
+    "sinopsis": "Nacido para competir, el joven y sumamente talentoso conductor Speed Racer busca ganar el gran rally de carreras para honrar a su difunto hermano. Con el fiel apoyo de su querida familia y su leal amigo mecánico, Speed debe enfrentarse en altas velocidades a los corruptos líderes corporativos que manipulan las despiadadas competiciones internacionales y se preparan para destruir a quienes intenten interponerse en su camino y su ansiado triunfo.",
+    "trailer": "https://www.youtube.com/embed/g2qTzHlGgEo",
+    "fecha_estreno": "2008-05-09",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 5,
+    "titulo": "Gigantes de Acero",
+    "imagen": "gigantes-de-acero.jpg",
+    "generos": ["Acción", "Ciencia Ficción", "Drama"],
+    "sinopsis": "En un futuro cercano bastante rudo donde el boxeo humano tradicional ha sido reemplazado por brutales combates callejeros entre robots gigantes, un ex boxeador con muy mala racha y su hijo distanciado se unen de manera inesperada para construir, reparar y entrenar a una pequeña máquina de pelear desechada. Mientras lo convierten en un grandioso contendiente formidable en el cuadrilátero, descubren que su vínculo familiar es mucho más fuerte que cualquier obstáculo o pelea.",
+    "trailer": "https://www.youtube.com/embed/ei5l3r1dq4Q",
+    "fecha_estreno": "2011-10-07",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 6,
+    "titulo": "Mi Villano Favorito",
+    "imagen": "mi-villano-favorito.jpg",
+    "generos": ["Animación", "Comedia", "Familiar"],
+    "sinopsis": "Gru es un brillante pero malhumorado villano calculador y despreciable que, decidido a realizar el crimen más desopilante y descarado de la historia robando nada menos que la luna, se ve envuelto en un peculiar incidente y se obliga a adoptar a tres entrañables niñas huérfanas como parte de su despiadado plan maestro. Sin embargo, su enorme y solitario corazón comienza a ablandarse peligrosamente con el incondicional amor inocente de las dulces niñas.",
+    "trailer": "https://www.youtube.com/embed/sUkZFetWYY0",
+    "fecha_estreno": "2010-07-09",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 7,
+    "titulo": "La Familia del Futuro",
+    "imagen": "familia-del-futuro.jpg",
+    "generos": ["Animación", "Aventura", "Comedia"],
+    "sinopsis": "Lewis es un joven y sumamente brillante inventor huérfano con un profundo y desesperado deseo de finalmente encontrar y conocer a su verdadera familia biológica. Su complicada vida da un giro verdaderamente drástico e inesperado cuando un enigmático joven visitante aparece y misteriosamente es transportado directamente al futuro, donde conoce a la estrafalaria, gigantesca y alocada familia Robinson con quienes descubrirá maravillosas verdades escondidas.",
+    "trailer": "https://www.youtube.com/embed/731I1E6G40A",
+    "fecha_estreno": "2007-03-30",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  },
+  {
+    "id": 8,
+    "titulo": "WALL-E",
+    "imagen": "wall-e.jpg",
+    "generos": ["Animación", "Ciencia Ficción", "Familiar"],
+    "sinopsis": "En un futuro sombrío donde toda la Tierra fue deprimentemente evacuada y quedó cubierta en su totalidad de alta basura industrial, un extremadamente tierno y solitario robot compactador de desechos llamado WALL-E pasa todos sus días diligentemente limpiando el planeta. Tras la sorpresiva e imponente llegada de la muy sofisticada robot exploradora EVE, el pequeño WALL-E se embarca por amor en un increíble y apasionante viaje épico que lo cambiará todo a través del inmenso espacio sideral.",
+    "trailer": "https://www.youtube.com/embed/CZ1CATNbXg0",
+    "fecha_estreno": "2008-06-27",
+    "precios": {
+      "estreno": 5.99,
+      "normal": 2.99
+    }
+  }
+]

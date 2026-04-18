@@ -1,0 +1,43 @@
+{
+  "1": [
+    { "calificacion": 5, "texto": "Increíble adaptación que captura la inmensidad del universo de Herbert." },
+    { "calificacion": 4, "texto": "Visualmente asombrosa, aunque el ritmo en algunos momentos decae." },
+    { "calificacion": 5, "texto": "Hans Zimmer brilla nuevamente con su banda sonora. Imperdible." }
+  ],
+  "2": [
+    { "calificacion": 4, "texto": "Muy divertida y entrañable, Adam Sandler en una de sus mejores actuaciones." },
+    { "calificacion": 3, "texto": "Comedia pasable para un domingo por la tarde, entretenida." },
+    { "calificacion": 5, "texto": "Una de las comedias románticas más tiernas de los 2000." }
+  ],
+  "3": [
+    { "calificacion": 5, "texto": "El Joker de Heath Ledger es simplemente legendario." },
+    { "calificacion": 5, "texto": "Posiblemente la mejor película de superhéroes jamás realizada." },
+    { "calificacion": 5, "texto": "Nolan redefine el género con una narrativa espectacular." },
+    { "calificacion": 4, "texto": "Larga pero atrapante, el final es verdaderamente impactante." }
+  ],
+  "4": [
+    { "calificacion": 5, "texto": "Visualmente deslumbrante, como ver una caricatura cobrar vida real." },
+    { "calificacion": 4, "texto": "Una locura de vibrantes colores y secuencias de carreras hiper kinéticas." },
+    { "calificacion": 5, "texto": "Subestimada en su época pero gloriosa y única en su ejecución." }
+  ],
+  "5": [
+    { "calificacion": 5, "texto": "La mezcla de robótica y boxeo le da un aire fresquísimo lleno de emoción." },
+    { "calificacion": 4, "texto": "Trama algo predecible pero las peleas me mantuvieron siempre al borde del asiento." },
+    { "calificacion": 5, "texto": "Atom es increíble. Te encariñas de la relación con el padre y el hijo al instante." }
+  ],
+  "6": [
+    { "calificacion": 5, "texto": "Carcajadas aseguradas de principio a fin, una película sumamente refrescante." },
+    { "calificacion": 5, "texto": "Los Minions se robaron la película y mi corazón por completo, impecable." },
+    { "calificacion": 4, "texto": "Tiene lecciones de familia que de un modo u otro siempre la hacen adorable de ver." }
+  ],
+  "7": [
+    { "calificacion": 5, "texto": "Una joya un poco oculta de Disney que destila innovación y humor peculiar." },
+    { "calificacion": 5, "texto": "El mensaje de 'Sigue Caminando' deja una profunda huella en tu memoria emocional." },
+    { "calificacion": 5, "texto": "La mezcla loca del futuro es alocadamente brillante." }
+  ],
+  "8": [
+    { "calificacion": 5, "texto": "Una silenciosa primera mitad que grita poesía cinematográfica pura y hermosa." },
+    { "calificacion": 5, "texto": "Cambiante, reflexiva y simplemente una de las mejores pelis animadas jamás hechas." },
+    { "calificacion": 4, "texto": "El mensaje ecológico duele por lo real que resulta hoy en día." }
+  ]
+}

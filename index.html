@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cineplus - CRTX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cretax_modern_designs.css">
+</head>
+<body class="layout-wrapper app-dark min-h-screen">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="#">Cineplus - CRTX</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="text-white text-center p-5" style="background: linear-gradient(135deg, rgba(30,30,30,1) 0%, rgba(13,110,253,0.2) 100%);">
+    <h1 class="fw-bold display-4">Cineplus - CRTX</h1>
+    <p class="lead">Consulta los estrenos y favoritos del público</p>
+  </header>
+
+  <main class="container py-4">
+    <!-- Loader Spinner para la Fase 2 (AJAX delay) -->
+    <div id="loader" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <h5 class="mt-3 text-muted">Alistando la mejor cartelera para ti...</h5>
+    </div>
+
+    <div class="row" id="lista-peliculas" style="display: none;">
+      <!-- Películas cargadas dinámicamente -->
+    </div>
+  </main>
+
+  <footer class="bg-dark text-center text-white py-3 border-top border-secondary">
+    <small>&copy; 2024 Cineplus - CRTX. Todos los derechos reservados.</small>
+  </footer>
+
+  <!-- Trailer Modal (Fase 2) -->
+  <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered p-dialog">
+      <div class="modal-content text-white shadow-lg" style="background: rgba(30,30,30,0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 12px; overflow: hidden;">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="trailerModalLabel">Tráiler Oficial</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="ratio ratio-16x9">
+            <iframe id="trailerIframe" src="" allowfullscreen style="border-radius: 8px;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Toast (Glassmorphism) -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="welcomeToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true" style="background: rgba(13, 110, 253, 0.7) !important; backdrop-filter: blur(10px); border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);">
+      <div class="d-flex">
+        <div class="toast-body">
+          <strong>¡Bienvenido a Cineplus - CRTX!</strong> Descubre los últimos estrenos y encuentra tu próxima película favorita.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
