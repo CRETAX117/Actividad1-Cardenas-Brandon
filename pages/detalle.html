@@ -1,96 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Detalle de Película</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container py-5">
-      <div class="text-center mb-4">
-        <h2 id="titulo" class="mb-3"></h2>
+<head>
+  <meta charset="UTF-8" />
+  <title>Detalle de Película - Cineplus - CRTX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cretax_modern_designs.css">
+</head>
+<body class="layout-wrapper app-dark min-h-screen d-flex flex-column">
 
-        <!-- Componente: Alerta informativa -->
-        <div class="alert alert-info" role="alert">
-          ¡Disfruta del tráiler oficial y conoce más sobre esta película!
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="../index.html">Cineplus - CRTX</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="renta.html">Renta</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero-section" class="position-relative text-white" style="background-size: cover; background-position: center; min-height: 60vh;">
+    <!-- Capa de Blur/Oscurecimiento para el fondo -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(to bottom, rgba(15,15,15,0.9), rgba(15,15,15,1)); backdrop-filter: blur(8px);"></div>
+    
+    <div class="container position-relative py-5 d-flex flex-column justify-content-center" style="min-height: 60vh;">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+          <img id="poster" src="" class="img-fluid rounded shadow-lg p-card" alt="Poster de la película" style="max-height: 480px; object-fit: cover;" />
         </div>
+        <div class="col-md-8">
+          <h1 id="titulo" class="display-3 fw-bold mb-3">...</h1>
+          <p id="genero" class="lead text-primary mb-4 fw-bold"></p>
+          <div class="p-4 rounded p-card" style="background: rgba(30,30,30,0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05);">
+            <h5 class="fw-bold mb-3">Sinopsis Oficial</h5>
+            <p id="sinopsis" class="mb-0 text-light" style="font-size: 1.15rem; line-height: 1.7;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-        <!-- Tráiler embebido -->
-        <div class="ratio ratio-16x9 mb-4">
+  <!-- Contenedor Inferior: Reseñas y Trailer -->
+  <main class="container py-5 flex-grow-1">
+    <div class="row">
+      <!-- Sector Video -->
+      <div class="col-lg-8 mb-5 mb-lg-0">
+        <h3 class="fw-bold mb-4 text-white border-bottom border-secondary pb-2">Tráiler Cinematográfico</h3>
+        <div class="ratio ratio-16x9 shadow-lg p-card rounded overflow-hidden" style="border: 1px solid rgba(255,255,255,0.05);">
           <iframe id="trailer" src="" allowfullscreen></iframe>
         </div>
       </div>
-
-      <!-- Tarjeta con sinopsis e imagen -->
-      <div class="card mb-4">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              id="poster"
-              src=""
-              class="img-fluid rounded-start"
-              alt="Poster de la película"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Sinopsis</h5>
-              <p id="sinopsis" class="card-text"></p>
-
-              <!-- Componente: Badge de género -->
-              <span id="genero" class="badge bg-secondary"></span>
-            </div>
-          </div>
+      
+      <!-- Sector Reseñas (AJAX) -->
+      <div class="col-lg-4">
+        <h3 class="fw-bold mb-4 text-white border-bottom border-secondary pb-2">Críticas y Reseñas</h3>
+        <div id="contenedor-reseñas" class="d-flex flex-column gap-3">
+            <p class="text-muted">Cargando la opinión pública...</p>
         </div>
       </div>
-
-      <div class="text-center">
-        <a href="../index.html" class="btn btn-secondary">Volver al inicio</a>
-      </div>
     </div>
+    
+    <div class="text-center mt-5 mb-3">
+      <a href="../index.html" class="btn btn-outline-light p-button px-5 py-2 fw-bold" style="border-radius: 8px;">Regresar a la Cartelera</a>
+    </div>
+  </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-      $(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get("id");
+  <footer class="bg-dark text-center text-white py-3 border-top border-secondary mt-auto">
+    <small>&copy; 2024 Cineplus - CRTX. Todos los derechos reservados.</small>
+  </footer>
 
-        $.ajax({
-          url: "../data/peliculas.json",
-          method: "GET",
-          dataType: "json",
-          success: function (peliculas) {
-            const peli = peliculas.find((p) => p.id == id);
-            if (peli) {
-              $("#titulo").text(peli.titulo);
-              $("#poster").attr("src", "../img/" + peli.imagen);
-              $("#sinopsis").text(peli.sinopsis);
-              $("#trailer").attr("src", peli.trailer);
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const idStr = urlParams.get("id");
+
+      if (!idStr) {
+        mostrarError();
+        return;
+      }
+
+      // 1. Petición AJAX para los datos estructurales del Detalle Hero
+      $.ajax({
+        url: "../data/peliculas.json",
+        method: "GET",
+        dataType: "json",
+        success: function (peliculas) {
+          const peli = peliculas.find((p) => p.id == idStr);
+          if (peli) {
+            $("#titulo").text(peli.titulo);
+            $("#poster").attr("src", "../img/" + peli.imagen);
+            $("#sinopsis").text(peli.sinopsis);
+            $("#trailer").attr("src", peli.trailer);
+            
+            // Evaluamos si el JSON tiene "generos" (array) o "genero" (string legacy)
+            if(peli.generos) {
+              $("#genero").text(peli.generos.join(" • "));
+            } else if (peli.genero) {
               $("#genero").text(peli.genero);
-            } else {
-              mostrarError();
             }
-          },
-          error: function () {
-            mostrarError();
-          },
-        });
 
-        function mostrarError() {
-          $("#detalle-pelicula").html(`
-          <div class="alert alert-danger text-center" role="alert">
-            No se pudo cargar la información de la película.
-          </div>
-          <div class="text-center">
-            <a href="../index.html" class="btn btn-secondary mt-3">Volver al inicio</a>
-          </div>
-        `);
+            // Fondo inmersivo del Header
+            $("#hero-section").css("background-image", `url('../img/${peli.imagen}')`);
+            
+            // Llamamos a la sub-petición para leer el segundo JSON
+            cargarResenas(idStr);
+          } else {
+            mostrarError();
+          }
+        },
+        error: function () {
+          mostrarError();
         }
       });
-    </script>
-  </body>
+
+      // 2. Sub-Petición AJAX para leer evaluaciones (Fase 4)
+      function cargarResenas(movieId) {
+        $.ajax({
+          url: "../data/reseñas.json",
+          method: "GET",
+          dataType: "json",
+          success: function (resenasAll) {
+            const reviewsForMovie = resenasAll[movieId];
+            let rawHtml = "";
+            
+            if (reviewsForMovie && reviewsForMovie.length > 0) {
+              reviewsForMovie.forEach(comentario => {
+                let estrellasGraficas = "";
+                // Renderizado repetitivo de íconos según nivel
+                for (let i = 0; i < comentario.calificacion; i++) {
+                  estrellasGraficas += "⭐";
+                }
+                
+                rawHtml += `
+                  <div class="p-3 rounded p-card shadow-sm" style="background-color: #1a1a1a; border: 1px solid rgba(255,255,255,0.05);">
+                      <div class="mb-2" style="font-size:0.9rem;">${estrellasGraficas}</div>
+                      <p class="mb-0 text-muted fst-italic" style="font-size: 0.95rem;">"${comentario.texto}"</p>
+                  </div>
+                `;
+              });
+            } else {
+              rawHtml = `<div class="alert alert-secondary text-center" role="alert">Aún no hay reseñas para este título.</div>`;
+            }
+            
+            $("#contenedor-reseñas").hide().html(rawHtml).fadeIn(800);
+          },
+          error: function() {
+            $("#contenedor-reseñas").html(`<p class="text-danger">Hubo un problema recuperando las reseñas.</p>`);
+          }
+        });
+      }
+
+      function mostrarError() {
+        $("body").html(`
+          <div class="container py-5 d-flex flex-column align-items-center justify-content-center min-h-screen">
+            <h1 class="display-1 fw-bold text-danger mb-3">404</h1>
+            <div class="alert alert-danger text-center w-50" role="alert">
+              Lo sentimos muchísimo, la información de esta película no existe o fue removida de la cartelera.
+            </div>
+            <a href="../index.html" class="btn btn-outline-light mt-4 px-4 py-2 p-button">Volver a Home</a>
+          </div>
+        `);
+        $("body").addClass("layout-wrapper app-dark min-h-screen text-white bg-dark");
+      }
+    });
+  </script>
+</body>
 </html>

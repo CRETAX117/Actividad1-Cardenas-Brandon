@@ -1,42 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>Contacto - CinePlus</title>
+  <title>Contacto - Cineplus - CRTX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cretax_modern_designs.css">
 </head>
-<body>
-  <div class="container py-5">
-    <h2 class="mb-4">Contáctanos</h2>
-    <form id="form-contacto" novalidate>
-      <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" required>
+
+<body class="layout-wrapper app-dark min-h-screen">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="../index.html">Cineplus - CRTX</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="renta.html">Renta</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+        </ul>
       </div>
-      <div class="mb-3">
-        <label for="correo" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="correo" required>
+    </div>
+  </nav>
+
+  <div class="container py-5 d-flex justify-content-center">
+    <div class="card p-card shadow-lg w-100"
+      style="max-width: 600px; background-color: #1a1a1a; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; color: white;">
+      <div class="card-body p-4">
+        <h2 class="mb-4 text-center fw-bold">Contáctanos</h2>
+        <form id="form-contacto" novalidate>
+          <div class="mb-3 position-relative">
+            <label for="nombre" class="form-label text-muted">Nombre Completo</label>
+            <input type="text" class="form-control p-inputtext bg-dark text-white border-secondary" id="nombre"
+              placeholder="Ingresa tu nombre">
+            <div id="error-nombre" class="text-danger small mt-1 d-none"></div>
+          </div>
+          <div class="mb-3 position-relative">
+            <label for="correo" class="form-label text-muted">Correo electrónico</label>
+            <input type="email" class="form-control p-inputtext bg-dark text-white border-secondary" id="correo"
+              placeholder="ejemplo@cineplus.com">
+            <div id="error-correo" class="text-danger small mt-1 d-none"></div>
+          </div>
+          <div class="mb-4 position-relative">
+            <label for="mensaje" class="form-label text-muted">Mensaje (Entre 20 y 50 caracteres)</label>
+            <textarea class="form-control p-inputtext bg-dark text-white border-secondary" id="mensaje" rows="4"
+              placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+            <div id="error-mensaje" class="text-danger small mt-1 d-none"></div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary p-button fw-bold py-2">Enviar Mensaje</button>
+          </div>
+          <div id="alerta-exito" class="alert alert-success mt-4 d-none text-center"
+            style="background: rgba(25, 135, 84, 0.2); color: #47ff96; border: none; border-radius: 8px;">
+            ¡Mensaje enviado con éxito! Te contactaremos pronto.
+          </div>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="mensaje" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="mensaje" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      <div id="alerta" class="alert alert-success mt-3 d-none">Mensaje enviado con éxito.</div>
-    </form>
+    </div>
   </div>
+
+  <footer class="bg-dark text-center text-white py-3 border-top border-secondary mt-auto">
+    <small>&copy; 2024 Cineplus - CRTX. Todos los derechos reservados.</small>
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
-    $('#form-contacto').on('submit', function (e) {
-      e.preventDefault();
-      if (this.checkValidity()) {
-        $('#alerta').removeClass('d-none').hide().fadeIn();
-        setTimeout(() => $('#alerta').fadeOut(), 3000);
-        this.reset();
+    $('#form-contacto').submit(function (evento) {
+      evento.preventDefault();
+      
+      var nombre = $('#nombre').val();
+      var correo = $('#correo').val();
+      var mensaje = $('#mensaje').val();
+
+      // Esconder alertas y mensajes cada vez que presiona enviar
+      $('#error-nombre').addClass('d-none');
+      $('#error-correo').addClass('d-none');
+      $('#error-mensaje').addClass('d-none');
+      $('#alerta-exito').addClass('d-none');
+
+      var validado = true;
+
+      // Validar Nombre vacío
+      if (nombre == "") {
+        $('#error-nombre').text('Falta ingresar el nombre').removeClass('d-none');
+        validado = false;
+      }
+
+      // Validar Correo incompleto
+      if (correo == "" || correo.indexOf("@") == -1) {
+        $('#error-correo').text('Debes ingresar un correo que tenga @').removeClass('d-none');
+        validado = false;
+      }
+
+      // Validar Mensaje obligando entre 20 y 50 letras
+      if (mensaje.length < 20 || mensaje.length > 50) {
+        $('#error-mensaje').text('El mensaje tiene que tener entre 20 y 50 letras obligatoriamente.').removeClass('d-none');
+        validado = false;
+      }
+
+      // Si todo está bien, mandamos el exito
+      if (validado == true) {
+        $('#alerta-exito').removeClass('d-none');
+        
+        // Limpiamos los cajones manualmente
+        $('#nombre').val("");
+        $('#correo').val("");
+        $('#mensaje').val("");
       }
     });
   </script>
 </body>
+
 </html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Renta de Películas - Cineplus - CRTX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cretax_modern_designs.css">
+</head>
+<body class="layout-wrapper app-dark min-h-screen">
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-primary" href="../index.html">Cineplus - CRTX</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="renta.html">Renta</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5 d-flex justify-content-center">
+    <div class="card p-card shadow-lg w-100" style="max-width: 700px; background-color: #1a1a1a; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; color: white;">
+      <div class="card-body p-5">
+        <h2 class="mb-4 text-center fw-bold text-primary">Módulo de Rentas</h2>
+        <p class="text-center text-muted mb-4">Añade al carrito tus títulos favoritos para gozar el mejor fin de semana.</p>
+        
+        <form id="form-renta">
+          
+          <div class="row mb-3">
+            <div class="col-md-7 position-relative">
+              <label for="cliente" class="form-label text-muted">Nombre del Cliente</label>
+              <input type="text" class="form-control p-inputtext bg-dark text-white border-secondary" id="cliente" required placeholder="Ingresa tu nombre para la orden">
+              <div class="invalid-feedback text-danger small mt-1">El nombre es requerido.</div>
+            </div>
+            <div class="col-md-5 position-relative">
+              <label for="dias" class="form-label text-muted">Cantidad de días (1 a 15)</label>
+              <input type="number" class="form-control p-inputtext bg-dark text-white border-secondary" id="dias" min="1" max="15" value="1" required>
+            </div>
+          </div>
+
+          <div class="mb-3 position-relative">
+            <label for="peliculas-select" class="form-label text-muted">Películas a Rentar (Usa Ctrl/Cmd para selección múltiple)</label>
+            <select multiple class="form-select bg-dark text-white border-secondary p-inputtext" id="peliculas-select" style="min-height: 150px;" required>
+              <option disabled>Selecciona una o más películas...</option>
+              <!-- Dinámicamente llenado usando AJAX -->
+            </select>
+          </div>
+
+          <div class="mb-4 position-relative">
+            <label for="metodo-pago" class="form-label text-muted">Método de Pago</label>
+            <select class="form-select bg-dark text-white border-secondary p-inputtext" id="metodo-pago" required>
+              <option value="Tarjeta de Crédito">Tarjeta de Crédito (Visa/Mastercard)</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Transferencia Bancaria">Transferencia Bancaria directa</option>
+            </select>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success p-button fw-bold py-3">Confirmar Renta y Analizar Costos</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-center text-white py-3 border-top border-secondary mt-auto">
+    <small>&copy; 2024 Cineplus - CRTX. Todos los derechos reservados.</small>
+  </footer>
+
+  <!-- Modal de Resumen de Compra -->
+  <div class="modal fade" id="modalResumen" tabindex="-1" aria-labelledby="modalResumenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered p-dialog">
+      <div class="modal-content text-white shadow-lg" style="background: rgba(30,30,30,0.95); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 12px; overflow: hidden;">
+        <div class="modal-header border-bottom border-secondary">
+          <h5 class="modal-title fw-bold text-success" id="modalResumenLabel">🎉 Resumen de tu Renta</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p><strong>Cliente:</strong> <span id="res-cliente" class="text-primary"></span></p>
+          <p><strong>Método de pago:</strong> <span id="res-pago"></span></p>
+          <p><strong>Días de renta:</strong> <span id="res-dias"></span> días</p>
+          
+          <h6 class="mt-4 border-bottom border-secondary pb-2">Películas seleccionadas:</h6>
+          <ul id="res-peliculas" class="list-unstyled text-muted small ps-3"></ul>
+          
+          <h4 class="mt-4 text-end">Total a pagar: <span id="res-total" class="text-success fw-bold"></span></h4>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">Confirmar y Cerrar Transacción</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var peliculasGuardadas = [];
+
+    // Llamado AJAX para leer JSON
+    $(document).ready(function() {
+      $.ajax({
+        url: "../data/peliculas.json",
+        method: "GET",
+        dataType: "json",
+        success: function (datos) {
+          peliculasGuardadas = datos;
+          var opciones = "";
+          
+          for(var i = 0; i < datos.length; i++) {
+             // Validar precio por fecha de manera simple
+             var precioPeli = datos[i].precios.normal;
+             if (datos[i].fecha_estreno >= "2010-01-01") {
+                precioPeli = datos[i].precios.estreno;
+             }
+             // Construimos la lista select
+             opciones = opciones + "<option value='" + datos[i].id + "'>" + datos[i].titulo + " - $" + precioPeli + "</option>";
+          }
+          $("#peliculas-select").html(opciones);
+        },
+        error: function() {
+          $("#peliculas-select").html("<option disabled>Error en base de datos.</option>");
+        }
+      });
+    });
+
+    // Evento Confirmar Renta
+    $('#form-renta').submit(function(evento) {
+      evento.preventDefault();
+
+      var nombreCliente = $('#cliente').val();
+      var numeroDias = $('#dias').val();
+      var metodoPago = $('#metodo-pago').val();
+      var seleccionadas = $('#peliculas-select').val();
+
+      if (nombreCliente == "" || seleccionadas == null) {
+        alert("Te faltan datos por llenar o no escogiste pelicula");
+        return;
+      }
+
+      var totalPagar = 0;
+      var listaTitulos = "";
+
+      // Doble for anidado tradicional para buscar las peliculas escogidas
+      for (var i = 0; i < seleccionadas.length; i++) {
+        var idSeleccionado = seleccionadas[i];
+        
+        for (var j = 0; j < peliculasGuardadas.length; j++) {
+          if (peliculasGuardadas[j].id == idSeleccionado) {
+            
+            var precio = peliculasGuardadas[j].precios.normal;
+            if (peliculasGuardadas[j].fecha_estreno >= "2010-01-01") {
+               precio = peliculasGuardadas[j].precios.estreno;
+            }
+
+            totalPagar = totalPagar + precio; // Sumar al total
+            listaTitulos = listaTitulos + "<li>" + peliculasGuardadas[j].titulo + " - $" + precio + "</li>";
+          }
+        }
+      }
+
+      // Multiplicar el total por los dias
+      totalPagar = totalPagar * numeroDias;
+
+      // Llenar el modal de resumen seleccionando cada cosa
+      $('#res-cliente').text(nombreCliente);
+      $('#res-dias').text(numeroDias);
+      $('#res-pago').text(metodoPago);
+      $('#res-peliculas').html(listaTitulos);
+      $('#res-total').text("$" + totalPagar);
+
+      // Lanzar modal de botstrap
+      var myModal = new bootstrap.Modal(document.getElementById('modalResumen'));
+      myModal.show();
+    });
+  </script>
+</body>
+</html>
