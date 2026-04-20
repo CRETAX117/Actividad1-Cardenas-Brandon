@@ -1,27 +1,41 @@
-# Aplicaciones Web - Unidad 1
+# Aplicaciones web – Unidad 1
 
-## Información del Estudiante
-* **Nombre:** Brandon Cardenas
-* **Grupo:** N1
-* **Sede:** Cuenca
-* **Fecha:** 17/04/2026
+## Información sobre el estudiante
 
-## Descripción del Proyecto
-Este proyecto es el resultado de la Actividad 1, basada en el código base de la Unidad 1 - Clase 5.
+* Nombre: Brandon Cardenas
 
-**🌐 Proyecto Publicado en Vivo:**  
-El proyecto se encuentra desplegado y funcional para su revisión en vivo en la siguiente dirección:  
-[https://cretax-systems.com/web/U1/](https://cretax-systems.com/web/U1/)
+* Grupo: N1
 
+* Sede: Cuenca
 
-## Funcionalidades Implementadas
+* Datos: 17/04/2026
 
-### 1. Diseño Moderno y Responsive
-He migrado el estilo css que uso en mis otros proyectos a este proyecto, para que tenga un diseño mas moderno y responsivo, este denominado como cretax_modern_designs.css y se encuentra en la carpeta css
-esto con el fin d eno volver a repetir codigo y tener un diseño mas consistente en mis proyectos.
+## Descripción del proyecto
 
-### 2. Estructuración y Ampliación de Datos (JSON)
-Se ha extendido el catálogo de películas a un total de 8 títulos en formato JSON (`peliculas.json`). Cada elemento de la cartelera ahora cuenta con información detallada, como un listado estructurado de sus géneros, sinopsis amplias, fecha de lanzamiento y esquemas de precios para catalogarlas (cartelera normal vs estrenos). También se elaboró una base de datos ligera para reseñas (`reseñas.json`) que permita enriquecer la experiencia de los perfiles.
+Este proyecto es el resultado de la Actividad 1, basada en el código fuente de la Unidad 1 - Lección 5. He creado una página para ver películas, utilizando HTML y CSS, y he recuperado los datos con JavaScript y AJAX.
 
-### 3. Sistema de Notificaciones Inteligentes y Persistencia Local
-Se desarrolló y estilizó una pequeña notificación de bienvenida en formato _Toast_. Para cuidar la experiencia del usuario, dicha notificación está vinculada a las rutinas de la API de `localStorage` del navegador. De este modo, la aplicación memoriza la visita del usuario y nos aseguramos de que no resulte invasiva al no repetirse en futuras recargas de la página.
+Mi proyecto está publicado en línea en el siguiente enlace: [https://cretax-systems.com/web/U1/](https://cretax-systems.com/web/U1/)
+
+## Funcionalidades que he logrado implementar
+
+### 1. Diseño y estilos
+
+He configurado el diseño general de la página, vinculando un archivo CSS que ya tenía, llamado cretax_modern_designs.css, para que todas las páginas tengan el mismo fondo oscuro coherente. También he creado una barra de menú en la parte superior, donde he marcado manualmente qué pestaña está activa. Además, he agregado un pie de página al final de la página.
+
+### 2. Cargar los JSON utilizando AJAX
+
+He ampliado el archivo JSON de películas, agregando 8 películas nuevas. Luego, he utilizado la función $.ajax de jQuery para leer el archivo, pero he agregado un retraso de 5 segundos para mostrar una rueda de carga antes de mostrar los datos. También he verificado si la película es posterior a 2010 para etiquetarla como “Primera” y establecer un precio elevado.
+
+En la página de detalles de la película, he utilizado la URL para extraer el ID de la película y he lanzado otro AJAX para solicitar el archivo de reseñas. Luego, he utilizado un ciclo for para pintar tantas estrellas como valoraciones tiene el usuario.
+
+### 3. Formularios y validaciones personalizados
+
+He creado un script para validar el formulario de contacto manualmente. No he utilizado solo el campo “required", sino que he creado un script con condiciones que controlan cada casilla. Si no hay una dirección de correo electrónico con @, o si el mensaje contiene menos de 20 o más de 50 palabras, muestro un texto de error oculto debajo y le digo al HTML que interrumpa inmediatamente el evento Submit.
+
+También he creado un formulario para el alquiler múltiple. Cuando se presiona el botón, leo los seleccionados con jQuery y ejecuto un ciclo for anidado que recorre todas las películas en busca de coincidencias. Luego, tomo el valor del alquiler, los sumo, los multiplico por los días y inserto esta variable como texto total en una ventana modal Bootstrap.
+
+### 4. Extra y LocalStorage
+
+He agregado un botón que inserta dinámicamente un enlace de YouTube en una etiqueta iframe para mostrar un video emergente sin tener que cambiar a otra pestaña.
+
+También he programado una pequeña notificación de bienvenida en la esquina inferior derecha. He insertado una lógica para que escriba automáticamente en tu navegador utilizando localStorage.setItem('welcomeShown', 'true') y así haya una condición la próxima vez que accedas, bloqueando el toast para que no se repita continuamente.
